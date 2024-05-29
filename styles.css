@@ -1,16 +1,13 @@
 body {
-    font-family: trebuchet ms, sans-serif;
-    font-weight: lighter;
+    font-family: Arial, sans-serif;
     display: flex;
-    font-size: 0.875em;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    overflow: hidden;
-    color: black;
-    background-color: #D3D3D3;
+    background-color: #f0f0f0;
+    overflow: hidden; 
 }
 
 .header {
@@ -38,4 +35,16 @@ body {
     cursor: pointer;
     backface-visibility: hidden;
     transition: transform 0.6s;
+}
+
+#back {
+    display: none;
+}
+
+.flip-out {
+    transform: rotateY(180deg);
+}
+
+.flip-in {
+    transform: rotateY(-180deg);
 }
