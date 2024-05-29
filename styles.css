@@ -1,13 +1,16 @@
 body {
-    font-family: gill sans, sans-serif;
+    font-family: trebuchet ms, sans-serif;
+    font-weight: lighter;
     display: flex;
+    text-shadow: 0px 0px 20px tan;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
-    overflow: hidden; 
+    overflow: hidden;
+    color: antiquewhite;
+    background-color: antiquewhite;
 }
 
 .header {
