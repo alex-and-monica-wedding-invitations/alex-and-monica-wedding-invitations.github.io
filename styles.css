@@ -2,15 +2,15 @@ body {
     font-family: trebuchet ms, sans-serif;
     font-weight: lighter;
     display: flex;
-    text-shadow: 0px 0px 20px tan;
+    font-size: 0.875em;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     overflow: hidden;
-    color: antiquewhite;
-    background-color: antiquewhite;
+    color: black;
+    background-color: #D3D3D3;
 }
 
 .header {
