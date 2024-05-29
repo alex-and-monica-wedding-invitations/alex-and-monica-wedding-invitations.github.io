@@ -10,14 +10,11 @@ body {
 
 .invitation {
     position: relative;
-    width: 400px; /* Adjust as needed */
-    height: 200px; /* Adjust as needed */
     perspective: 1000px;
 }
 
 .invitation img {
     position: absolute;
-    width: 100%;
     height: 100%;
     object-fit: cover;
     cursor: pointer;
