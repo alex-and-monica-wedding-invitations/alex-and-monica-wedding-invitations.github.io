@@ -7,7 +7,7 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
-    overflow: hidden; /* Prevents scrolling */
+    overflow: hidden; 
 }
 
 .header {
@@ -22,8 +22,8 @@ body {
 
 .invitation {
     position: relative;
-    width: 600px; /* Adjust as needed */
-    height: 400px; /* Adjust as needed */
+    width: 600px; 
+    height: 400px; 
     perspective: 1000px;
 }
 
@@ -35,25 +35,4 @@ body {
     cursor: pointer;
     backface-visibility: hidden;
     transition: transform 0.6s;
-}
-
-.circle {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: rgba(255, 0, 0, 0.3); /* Adjust color and transparency as needed */
-    animation: pulse 1.5s infinite alternate; /* Adjust animation duration as needed */
-    display: none; /* Initially hidden */
-}
-
-@keyframes pulse {
-    from {
-        transform: scale(1);
-        opacity: 1;
-    }
-    to {
-        transform: scale(1.3);
-        opacity: 0.3;
-    }
 }
