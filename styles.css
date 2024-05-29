@@ -1,5 +1,4 @@
 body {
-    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,6 +15,7 @@ body {
 }
 
 .header h1 {
+    font-family: Copperplate, Papyrus, fantasy;
     font-size: 2em;
     margin: 0;
 }
