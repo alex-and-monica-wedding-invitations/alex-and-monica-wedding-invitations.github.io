@@ -55,10 +55,10 @@
                 frontImage.classList.add('flip-out');
                 backImage.classList.add('flip-in');
                 setTimeout(() => {
-                    frontImage.style.display = 'block';
-                    backImage.style.display = 'none';
-                    frontImage.classList.remove('flip-in');
-                    backImage.classList.remove('flip-out');
+                    frontImage.style.display = 'none';
+                    backImage.style.display = 'block';
+                    frontImage.classList.remove('flip-out');
+                    backImage.classList.remove('flip-in');
                 }, 600); 
             });
 
@@ -66,10 +66,10 @@
                 backImage.classList.add('flip-out');
                 frontImage.classList.add('flip-in');
                 setTimeout(() => {
-                    backImage.style.display = 'block';
-                    frontImage.style.display = 'none';
-                    backImage.classList.remove('flip-in');
-                    frontImage.classList.remove('flip-out');
+                    backImage.style.display = 'none';
+                    frontImage.style.display = 'block';
+                    backImage.classList.remove('flip-out');
+                    frontImage.classList.remove('flip-in');
                 }, 600); 
             });
         });
