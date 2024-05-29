@@ -10,26 +10,18 @@ body {
 
 .invitation {
     position: relative;
-    perspective: 1000px;
+    width: 600px; /* Adjust as needed */
+    height: 400px; /* Adjust as needed */
 }
 
 .invitation img {
     position: absolute;
+    width: 100%;
     height: 100%;
     object-fit: cover;
     cursor: pointer;
-    backface-visibility: hidden;
-    transition: transform 0.6s;
 }
 
 #back {
     display: none;
-}
-
-.flip-out {
-    transform: rotateY(180deg);
-}
-
-.flip-in {
-    transform: rotateY(-180deg);
 }
