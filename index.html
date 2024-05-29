@@ -8,8 +8,8 @@
 </head>
 <body>
     <div class="invitation">
-        <img id="front" src="digital-fata.png" alt="Front of the wedding invitation">
-        <img id="back" src="digital-verso.png" alt="Back of the wedding invitation">
+        <img id="front" class="flip-image" src="digital-fata.png" alt="Front of the wedding invitation">
+        <img id="back" class="flip-image" src="digital-verso.png" alt="Back of the wedding invitation">
     </div>
 
     <script>
@@ -18,13 +18,25 @@
             const backImage = document.getElementById('back');
 
             frontImage.addEventListener('click', function() {
-                frontImage.style.display = 'none';
-                backImage.style.display = 'block';
+                frontImage.classList.add('flip-out');
+                backImage.classList.add('flip-in');
+                setTimeout(() => {
+                    frontImage.style.display = 'none';
+                    backImage.style.display = 'block';
+                    frontImage.classList.remove('flip-out');
+                    backImage.classList.remove('flip-in');
+                }, 600); 
             });
 
             backImage.addEventListener('click', function() {
-                backImage.style.display = 'none';
-                frontImage.style.display = 'block';
+                backImage.classList.add('flip-out');
+                frontImage.classList.add('flip-in');
+                setTimeout(() => {
+                    backImage.style.display = 'none';
+                    frontImage.style.display = 'block';
+                    backImage.classList.remove('flip-out');
+                    frontImage.classList.remove('flip-in');
+                }, 600); 
             });
         });
     </script>
