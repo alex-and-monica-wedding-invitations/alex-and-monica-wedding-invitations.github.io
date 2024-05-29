@@ -12,6 +12,7 @@
         <h1>You're invited!</h1>
     </div>
     <div class="invitation">
+        <div id="circle" class="circle"></div>
         <img id="front" class="flip-image" src="digital-fata.png" alt="Front of the wedding invitation">
         <img id="back" class="flip-image" src="digital-verso.png" alt="Back of the wedding invitation">
     </div>
@@ -20,6 +21,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             const frontImage = document.getElementById('front');
             const backImage = document.getElementById('back');
+            const circle = document.getElementById('circle');
 
             function triggerConfetti() {
                 var duration = 5 * 1000;
@@ -49,18 +51,18 @@
                 }, 250);
             }
 
-            // Trigger confetti when the page loads
             triggerConfetti();
 
             frontImage.addEventListener('click', function() {
                 frontImage.classList.add('flip-out');
                 backImage.classList.add('flip-in');
+                circle.style.display = 'none'; 
                 setTimeout(() => {
                     frontImage.style.display = 'none';
                     backImage.style.display = 'block';
                     frontImage.classList.remove('flip-out');
                     backImage.classList.remove('flip-in');
-                }, 600); // Duration of the flip animation
+                }, 600); 
             });
 
             backImage.addEventListener('click', function() {
@@ -71,8 +73,12 @@
                     frontImage.style.display = 'block';
                     backImage.classList.remove('flip-out');
                     frontImage.classList.remove('flip-in');
-                }, 600); // Duration of the flip animation
+                }, 600); 
             });
+
+            setTimeout(() => {
+                circle.style.display = 'block';
+            }, 1000); 
         });
     </script>
 </body>
