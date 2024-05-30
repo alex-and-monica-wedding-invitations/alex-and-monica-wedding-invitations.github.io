@@ -73,15 +73,35 @@ button {
 .invitation-front, .invitation-back {
     max-width: 90%;
     max-height: 80%;
+    transition: transform 1s;
     position: absolute;
 }
 
-.flip-out {
+.invitation-front {
+    transform: translateX(100%);
+}
+
+.invitation-back {
+    display: none;
     transform: rotateY(180deg);
 }
 
-.flip-in {
-    transform: rotateY(-180deg);
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes flip {
+    from {
+        transform: rotateY(0);
+    }
+    to {
+        transform: rotateY(180deg);
+    }
 }
 
 .show {
