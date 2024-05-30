@@ -46,6 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
         invitationBack.style.animation = 'flip 1s forwards';
     });
 
+    invitationBack.addEventListener('click', () => {
+        invitationBack.style.display = 'none';
+        invitationFront.style.display = 'block';
+        invitationBack.style.animation = 'flip 1s forwards';
+    });
+
     invitationContainer.addEventListener('click', (event) => {
         if (event.target === invitationContainer) {
             invitationContainer.classList.remove('show');
