@@ -1,48 +1,55 @@
-document.querySelector('.open-invitation').addEventListener('click', function() {
-    document.querySelector('.invitation-backdrop').style.display = 'block';
-    document.querySelector('.invitation-card').style.display = 'block';
-    confetti();
-});
+document.addEventListener('DOMContentLoaded', () => {
+    const openInvitationButton = document.getElementById('open-invitation');
+    const invitationContainer = document.querySelector('.invitation');
+    const invitationFront = document.querySelector('.invitation-front');
+    const invitationBack = document.querySelector('.invitation-back');
+    const confettiCanvas = document.getElementById('confetti');
+    const confettiCtx = confettiCanvas.getContext('2d');
 
-document.querySelector('.invitation-card img').addEventListener('click', function() {
-    document.querySelector('.invitation-card').classList.toggle('flip');
-});
+    function showConfetti() {
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
 
-document.querySelector('.invitation-backdrop').addEventListener('click', function() {
-    document.querySelector('.invitation-backdrop').style.display = 'none';
-    document.querySelector('.invitation-card').style.display = 'none';
-});
+        const confettiColors = ['#FF4081', '#FFC107', '#8BC34A', '#00BCD4', '#9C27B0'];
+        const confettiPieces = Array.from({ length: 100 }, () => ({
+            x: Math.random() * confettiCanvas.width,
+            y: Math.random() * confettiCanvas.height,
+            color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
+            size: Math.random() * 10 + 5,
+            speed: Math.random() * 5 + 2
+        }));
 
-const confettiColors = ['#FFFFEF', '#FFDA9E', '#FFD7F0', '#D7FAFF'];
+        function drawConfetti() {
+            confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            confettiPieces.forEach(piece => {
+                piece.y += piece.speed;
+                if (piece.y > confettiCanvas.height) piece.y = 0;
+                confettiCtx.fillStyle = piece.color;
+                confettiCtx.fillRect(piece.x, piece.y, piece.size, piece.size);
+            });
+            requestAnimationFrame(drawConfetti);
+        }
 
-function confetti() {
-    for (let i = 0; i < 100; i++) {
-        const canvas = document.createElement('canvas');
-        canvas.classList.add('confetti');
-        canvas.width = 6;
-        canvas.height = 12;
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = confettiColors[Math.floor(Math.random() * confettiColors.length)];
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        document.body.appendChild(canvas);
+        drawConfetti();
     }
 
-    const confettis = document.querySelectorAll('.confetti');
-    confettis.forEach(confetti => {
-        const x = Math.random() * window.innerWidth;
-        const y = Math.random() * window.innerHeight;
-        const rotation = Math.random() * 360;
-        const scale = Math.random() * 0.5 + 0.5;
-        const speed = Math.random() * 2 + 1;
-        confetti.style.left = `${x}px`;
-        confetti.style.top = `${y}px`;
-        confetti.style.transform = `rotate(${rotation}deg) scale(${scale})`;
-        confetti.style.animation = `fall ${speed}s linear infinite`;
+    openInvitationButton.addEventListener('click', () => {
+        invitationContainer.classList.add('show');
+        invitationFront.style.animation = 'slideIn 1s forwards';
+        showConfetti();
     });
 
-    setTimeout(() => {
-        confettis.forEach(confetti => {
-            confetti.remove();
-        });
-    }, 3000);
-}
+    invitationFront.addEventListener('click', () => {
+        invitationFront.style.display = 'none';
+        invitationBack.style.display = 'block';
+        invitationBack.style.animation = 'flip 1s forwards';
+    });
+
+    invitationContainer.addEventListener('click', (event) => {
+        if (event.target === invitationContainer) {
+            invitationContainer.classList.remove('show');
+            invitationFront.style.display = 'block';
+            invitationBack.style.display = 'none';
+        }
+    });
+});
