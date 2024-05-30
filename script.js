@@ -4,9 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const invitationFront = document.querySelector('.invitation-front');
     const invitationBack = document.querySelector('.invitation-back');
     const invitationFrontFlipped = document.querySelector('.invitation-front-flipped');
-    const invitationBackFlipped = document.querySelector('.invitation-back-flipped');
-    const confettiCanvas = document.getElementById('confetti');
-    const confettiCtx = confettiCanvas.getContext('2d');
 
     function triggerConfetti() {
         var duration = 5 * 1000;
@@ -56,14 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     invitationFrontFlipped.addEventListener('click', () => {
         invitationFrontFlipped.style.display = 'none';
-        invitationBackFlipped.style.display = 'block';
-        invitationBackFlipped.style.animation = 'flip 1s forwards';
-    })
-
-    invitationBackFlipped.addEventListener('click', () => {
-        invitationBackFlipped.style.display = 'none';
-        invitationFront.style.display = 'block';
-        invitationFront.style.animation = 'flip 1s forwards';
+        invitationBack.style.display = 'block';
+        invitationBack.style.animation = 'flip 1s forwards';
     })
 
     invitationContainer.addEventListener('click', (event) => {
