@@ -42,18 +42,20 @@ document.addEventListener('DOMContentLoaded', () => {
     invitationFront.addEventListener('click', () => {
         invitationFront.style.animation = '';
         invitationFront.style.transform = 'rotateY(180deg)';
-        invitationBack.style.display = 'block';
-        invitationBack.style.animation = 'flipToBack 1s forwards';
+        setTimeout(() => {
+            invitationBack.style.display = 'block';
+            invitationBack.style.animation = 'flipToBack 1s forwards';
+        }, 1000); // Delay to synchronize with the transform
     });
 
     invitationBack.addEventListener('click', () => {
         invitationBack.style.animation = '';
         invitationBack.style.transform = 'rotateY(0deg)';
-        invitationFront.style.display = 'block';
-        invitationFront.style.animation = 'flipToFront 1s forwards';
         setTimeout(() => {
+            invitationFront.style.display = 'block';
+            invitationFront.style.animation = 'flipToFront 1s forwards';
             invitationBack.style.display = 'none';
-        }, 1000); // Delay to allow the flip animation to complete
+        }, 1000); // Delay to synchronize with the transform
     });
 
     invitationContainer.addEventListener('click', (event) => {
