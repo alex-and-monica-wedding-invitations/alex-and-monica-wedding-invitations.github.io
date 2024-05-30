@@ -42,6 +42,10 @@ body, html {
     color: white;
 }
 
+.flip-info {
+    font-size: smaller;
+}
+
 .names {
     font-size: 2rem;
     margin-bottom: 20px;
