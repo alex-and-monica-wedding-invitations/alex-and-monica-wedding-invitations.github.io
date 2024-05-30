@@ -44,6 +44,8 @@ body, html {
 
 .flip-info {
     font-size: smaller;
+    position: absolute;
+    top: 150%;
 }
 
 .names {
