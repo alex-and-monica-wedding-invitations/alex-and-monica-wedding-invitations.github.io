@@ -40,16 +40,26 @@ document.addEventListener('DOMContentLoaded', () => {
         triggerConfetti();
     });
 
-    invitationFront.addEventListener('click', () => {
-        invitationFront.style.display = 'none';
-        invitationBack.style.display = 'block';
-        invitationBack.style.animation = 'flip 1s forwards';
+    invitationFront.addEventListener('click', function() {
+        invitationFront.classList.add('flip-out');
+        invitationBack.classList.add('flip-in');
+        setTimeout(() => {
+            invitationFront.style.display = 'none';
+            invitationBack.style.display = 'block';
+            invitationFront.classList.remove('flip-out');
+            invitationBack.classList.remove('flip-in');
+        }, 600); 
     });
 
-    invitationBack.addEventListener('click', () => {
-        invitationBack.style.display = 'none';
-        invitationFront.style.display = 'block';
-        invitationBack.style.animation = 'flip 1s forwards';
+    invitationBack.addEventListener('click', function() {
+        invitationBack.classList.add('flip-out');
+        invitationFront.classList.add('flip-in');
+        setTimeout(() => {
+            invitationBack.style.display = 'none';
+            invitationFront.style.display = 'block';
+            invitationBack.classList.remove('flip-out');
+            invitationFront.classList.remove('flip-in');
+        }, 600); 
     });
 
     invitationContainer.addEventListener('click', (event) => {
