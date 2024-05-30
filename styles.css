@@ -16,6 +16,10 @@ body, html {
     overflow: hidden;
 }
 
+.openbtn {
+    font-family: "Poiret One", sans-serif;
+}
+
 .poiret-one-regular {
     font-family: "Poiret One", sans-serif;
     font-weight: 400;
