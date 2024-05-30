@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const invitationContainer = document.querySelector('.invitation');
     const invitationFront = document.querySelector('.invitation-front');
     const invitationBack = document.querySelector('.invitation-back');
+    const invitationFrontFlipped = document.querySelector('.invitation-front-flipped');
+    const invitationBackFlipped = document.querySelector('.invitation-back-flipped');
     const confettiCanvas = document.getElementById('confetti');
     const confettiCtx = confettiCanvas.getContext('2d');
 
@@ -48,9 +50,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     invitationBack.addEventListener('click', () => {
         invitationBack.style.display = 'none';
+        invitationFrontFlipped.style.display = 'block';
+        invitationFrontFlipped.style.animation = 'flip 1s forwards';
+    });
+
+    invitationFrontFlipped.addEventListener('click', () => {
+        invitationFrontFlipped.style.display = 'none';
+        invitationBackFlipped.style.display = 'block';
+        invitationBackFlipped.style.animation = 'flip 1s forwards';
+    })
+
+    invitationBackFlipped.addEventListener('click', () => {
+        invitationBackFlipped.style.display = 'none';
         invitationFront.style.display = 'block';
         invitationFront.style.animation = 'flip 1s forwards';
-    });
+    })
 
     invitationContainer.addEventListener('click', (event) => {
         if (event.target === invitationContainer) {
