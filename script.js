@@ -40,16 +40,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     invitationFront.addEventListener('click', () => {
-        invitationFront.style.display = 'none';
+        invitationFront.style.animation = '';
+        invitationFront.style.transform = 'rotateY(180deg)';
         invitationBack.style.display = 'block';
-        invitationBack.style.animation = 'flip 1s forwards';
+        invitationBack.style.animation = 'flipToBack 1s forwards';
+    });
+
+    invitationBack.addEventListener('click', () => {
+        invitationBack.style.animation = '';
+        invitationBack.style.transform = 'rotateY(0deg)';
+        invitationFront.style.display = 'block';
+        invitationFront.style.animation = 'flipToFront 1s forwards';
+        setTimeout(() => {
+            invitationBack.style.display = 'none';
+        }, 1000); // Delay to allow the flip animation to complete
     });
 
     invitationContainer.addEventListener('click', (event) => {
         if (event.target === invitationContainer) {
             invitationContainer.classList.remove('show');
-            invitationFront.style.display = 'block';
+            invitationFront.style.transform = 'translateX(100%)';
+            invitationFront.style.animation = '';
             invitationBack.style.display = 'none';
+            invitationBack.style.transform = 'rotateY(180deg)';
         }
     });
 });

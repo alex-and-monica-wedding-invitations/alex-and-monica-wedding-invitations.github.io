@@ -68,6 +68,7 @@ button {
     max-height: 80%;
     transition: transform 1s;
     position: absolute;
+    backface-visibility: hidden;
 }
 
 .invitation-front {
@@ -75,8 +76,8 @@ button {
 }
 
 .invitation-back {
-    display: none;
     transform: rotateY(180deg);
+    display: none;
 }
 
 @keyframes slideIn {
@@ -88,12 +89,21 @@ button {
     }
 }
 
-@keyframes flip {
+@keyframes flipToBack {
     from {
         transform: rotateY(0);
     }
     to {
         transform: rotateY(180deg);
+    }
+}
+
+@keyframes flipToFront {
+    from {
+        transform: rotateY(180deg);
+    }
+    to {
+        transform: rotateY(0);
     }
 }
 
