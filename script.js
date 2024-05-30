@@ -6,37 +6,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const confettiCanvas = document.getElementById('confetti');
     const confettiCtx = confettiCanvas.getContext('2d');
 
-    function showConfetti() {
-        confettiCanvas.width = window.innerWidth;
-        confettiCanvas.height = window.innerHeight;
+    function triggerConfetti() {
+        var duration = 5 * 1000;
+        var animationEnd = Date.now() + duration;
+        var defaults = {
+            startVelocity: 30,
+            spread: 360,
+            ticks: 60,
+            zIndex: 0,
+            colors: ['#FFD4CA', '#FFF6CA', '#CAF2FF', '#FFFFF5']
+        };
 
-        const confettiColors = ['#FF4081', '#FFC107', '#8BC34A', '#00BCD4', '#9C27B0'];
-        const confettiPieces = Array.from({ length: 100 }, () => ({
-            x: Math.random() * confettiCanvas.width,
-            y: Math.random() * confettiCanvas.height,
-            color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
-            size: Math.random() * 10 + 5,
-            speed: Math.random() * 5 + 2
-        }));
-
-        function drawConfetti() {
-            confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-            confettiPieces.forEach(piece => {
-                piece.y += piece.speed;
-                if (piece.y > confettiCanvas.height) piece.y = 0;
-                confettiCtx.fillStyle = piece.color;
-                confettiCtx.fillRect(piece.x, piece.y, piece.size, piece.size);
-            });
-            requestAnimationFrame(drawConfetti);
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
         }
 
-        drawConfetti();
+        var interval = setInterval(function() {
+            var timeLeft = animationEnd - Date.now();
+
+            if (timeLeft <= 0) {
+                return clearInterval(interval);
+            }
+
+            var particleCount = 50 * (timeLeft / duration);
+            confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+            confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+        }, 250);
     }
 
     openInvitationButton.addEventListener('click', () => {
         invitationContainer.classList.add('show');
         invitationFront.style.animation = 'slideIn 1s forwards';
-        showConfetti();
+        triggerConfetti();
     });
 
     invitationFront.addEventListener('click', () => {
