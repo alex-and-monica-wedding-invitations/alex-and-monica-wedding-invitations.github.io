@@ -1,52 +1,111 @@
-body {
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
-    overflow: hidden; 
-    text-shadow: 0px 0px 4px #D3D3D3;
-    color: ivory;
 }
 
-.header {
-    margin-bottom: 20px;
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5);
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
+    color: white;
 }
 
-.header h1 {
-    font-size: 2em;
-    margin: 0;
+.names {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.name, .ampersand {
+    display: block;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    background-color: #FF4081;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .invitation {
-    position: relative;
-    width: 600px; 
-    height: 400px; 
-    perspective: 1000px;
-}
-
-.invitation img {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: scale-down;
-    cursor: pointer;
-    backface-visibility: hidden;
-    transition: transform 0.6s;
-}
-
-#back {
     display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
 }
 
-.flip-out {
+.invitation-front, .invitation-back {
+    max-width: 90%;
+    max-height: 80%;
+    transition: transform 1s;
+    position: absolute;
+}
+
+.invitation-front {
+    transform: translateX(100%);
+}
+
+.invitation-back {
+    display: none;
     transform: rotateY(180deg);
 }
 
-.flip-in {
-    transform: rotateY(-180deg);
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes flip {
+    from {
+        transform: rotateY(0);
+    }
+    to {
+        transform: rotateY(180deg);
+    }
+}
+
+.show {
+    display: flex;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
